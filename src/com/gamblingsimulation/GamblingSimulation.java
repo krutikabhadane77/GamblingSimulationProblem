@@ -2,6 +2,7 @@
 //UC2 As a gambler make $1 bet so either win or loose $1.
 //UC3 As a calculative gambler if won or lost 50% of the stake, would resign for the day.
 //UC4 After 20 days of playing every day would like to know the total amount won or lost.
+//UC5 Each month would like to know the days won and lost and by how much,
 package com.gamblingsimulation;
 import java.util.Random;
 
@@ -10,6 +11,7 @@ public class GamblingSimulation {
     final int stake = 100;
     final int dayWin = 0;
     final int totalWin=0;
+
     public static void main(String[] args) {
         GamblingSimulation gambling = new GamblingSimulation();
         System.out.println("Welcome to Gambling Simulation Problem");
@@ -19,22 +21,18 @@ public class GamblingSimulation {
 
 
     public static void playGame(GamblingSimulation gambling, int bet, int stake, int dayWin, int totalWin) {
-        for (int day = 0; day <= 20; day++) {
-            while (stake != 50 && stake != 150) {
-                Random random = new Random();
-                int game = random.nextInt(2);
-                if (game == 0) {
-                    stake -= gambling.bet;
-                    System.out.println("Gambler loose the bet");
-                } else {
-                    stake += gambling.bet;
-                    System.out.println("Gambler won the bet");
-                }
-            }
-            dayWin = stake - 100;
-            System.out.println("Amount won for the day " +day+ "is " +dayWin);
-            totalWin += dayWin;
+
+        while (stake != 50 && stake != 150) {
+            Random random = new Random();
+            int game = random.nextInt(2);
+            if (game == 0) {
+                stake -= gambling.bet;
+                System.out.println("Gambler loose the bet");
+            } else {
+                stake += gambling.bet;
+                System.out.println("Gambler won the bet");
+            }System.out.println("Stake value is "+stake);
         }
-        System.out.println("Total amount won for 20 days is : "+totalWin);
     }
 }
+
